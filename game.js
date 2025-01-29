@@ -47,7 +47,7 @@ function genPlayers(num) {
 
 // intro screen
 function setup() {
-    new Canvas();
+    createCanvas()
 }
 
 function draw() {
