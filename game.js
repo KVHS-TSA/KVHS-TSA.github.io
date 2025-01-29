@@ -53,7 +53,7 @@ function setup() {
 function draw() {
     background('lightblue');
 
-    var startButton 
+    let startButton 
     startButton = new Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'n');
     startButton.text = 'Start';
     startButton.textSize = startButton.height * .8;
