@@ -3,8 +3,10 @@ body {
     .playerContainer {
         display: flex;
         flex-wrap: wrap;
+    }
+    #players {
         border-width: .5vw;
-        border-color: antiquewhite;
+        border-color: rgb(255, 250, 243);
         border-style: solid;
     }
 }

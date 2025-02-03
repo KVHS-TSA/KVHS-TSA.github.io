@@ -35,20 +35,20 @@ function genPlayers(numPlayers) {
     let container = document.getElementById("players");
     container.innerHTML = "";
 
-    for (let i = 0; i < numPlayers; i++) {
+    for (let i = 0; i <= numPlayers; i++) {
         let playerDiv = document.createElement("div");
         playerDiv.id = `player-${i}`;
         if (numPlayers = 2) {
-            playerDiv.style.width = windowWidth / 2 - windowWidth * .01;
-            playerDiv.style.height = windowHeight / 2  - windowHeight * .01;
+            playerDiv.style.width = windowWidth / 2 - windowWidth * .015;
+            playerDiv.style.height = windowHeight / 2  - windowHeight * .015;
         }
         else if (numPlayers = 3) {
-            playerDiv.style.width = windowWidth / 3 - windowWidth * .01;
-            playerDiv.style.height = windowHeight / 3 - windowHeight * .01;
+            playerDiv.style.width = windowWidth / 3 - windowWidth * .015;
+            playerDiv.style.height = windowHeight / 3 - windowHeight * .015;
         } 
         else if (numPlayers = 4) {
-            playerDiv.style.width = windowWidth / 4 - windowWidth * .01;
-            playerDiv.style.height = windowHeight / 4 - windowHeight * .01;
+            playerDiv.style.width = windowWidth / 4 - windowWidth * .015;
+            playerDiv.style.height = windowHeight / 4 - windowHeight * .015;
         }
         else if (numPlayers > 4) {
             console.log("Player Number Error: numPlayer > 4")
@@ -84,9 +84,15 @@ function draw() {
     startButton.stroke = color(0, 0);
 
     if (startButton.mouse.presses()) {
+        console.log('worked')
         startButton.remove();
-        let oldcanv = document.getElementById('canvas');
-        document.removeChild(oldcanv)
-        genPlayers()
+        document.querySelector('main').remove();
+
+        var players = document.getElementById('players');
+        players.style.border = ".5vw";
+        players.style.borderColor = 'rgb(255, 250, 243)';
+        players.style.borderStyle = 'solid';
+
+        genPlayers();
     }
 }
