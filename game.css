@@ -5,8 +5,6 @@ body {
         flex-wrap: wrap;
     }
     #players {
-        border-width: .5vw;
-        border-color: rgb(255, 250, 243);
-        border-style: solid;
+
     }
 }

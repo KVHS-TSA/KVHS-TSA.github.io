@@ -82,6 +82,7 @@ function draw() {
     startButton.color = color('purple');
     startButton.color.setAlpha(75);
     startButton.stroke = color(0, 0);
+    startButton.z = 100;
 
     if (startButton.mouse.presses()) {
         console.log('worked')
