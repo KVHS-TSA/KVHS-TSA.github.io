@@ -4,11 +4,12 @@ let windowHeight = document.documentElement.clientHeight;
 
 let sketches = [];
 
+let startButton 
+let startText 
+
 // function preload() {
 
 // }
-
-
 
 // function handling
 function nearestPowerOf2(n) {
@@ -73,19 +74,31 @@ function setup() {
 }
 
 function draw() {
+    clear();
     background('lightblue');
 
-    let startButton 
     startButton = new Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'k');
     startButton.text = 'Start';
-    startButton.textSize = startButton.height * .8;
+    if (startButton.height < startButton.width) {startButton.textSize = startButton.height * .8} 
+    else if (startButton.height > startButton.width) {startButton.textSize = startButton.width * .8}
+    else {startButton.textSize = .8 * startButton.width}
     startButton.color = color('purple');
     startButton.color.setAlpha(75);
     startButton.stroke = color(0, 0);
-    startButton.z = 100;
     startButton.debug();
 
-    if (startButton.mouse.presses()) {
+    startText = new Sprite(windowWidth / 2, windowHeight / 2 - startButton.height / 2, windowWidth * .175, windowHeight * .10, 'n');
+    startText.text = 'press any key to start';
+    if (startText.height < startText.width) {startText.textSize = startText.height * .5} 
+    else if (startText.height > startText.width) {startText.textSize = startText.width * .5}
+    else {startText.textSize = .5 * startText.width}
+    startText.color = color('purple');
+    startText.color.setAlpha(50);
+    startText.stroke = color(0, 0);
+    startText.debug();
+    
+
+    if (Kb()) {
         console.log('worked')
         startButton.remove();
         document.querySelector('main').remove();
