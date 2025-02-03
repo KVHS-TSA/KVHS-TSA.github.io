@@ -82,7 +82,6 @@ function draw() {
     startButton.color = color('purple');
     startButton.color.setAlpha(75);
     startButton.stroke = color(0, 0);
-    startButton.debug();
 
     let startText = new Sprite(windowWidth / 2, windowHeight / 2 - startButton.height / 2, windowWidth * .175, windowHeight * .10, 'n');
     startText.text = 'press any key to start';
@@ -92,7 +91,6 @@ function draw() {
     startText.color = color('purple');
     startText.color.setAlpha(50);
     startText.stroke = color(0, 0);
-    startText.debug();
     
 
     if (startButton.mouse.pressed()) {
