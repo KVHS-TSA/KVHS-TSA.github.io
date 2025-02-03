@@ -2,7 +2,7 @@
 let windowWidth = document.documentElement.clientWidth;
 let windowHeight = document.documentElement.clientHeight;
 
-let numPlayers;
+let numPlayers = 4;
 let sketches = [];
 
 // function preload() {
@@ -62,6 +62,9 @@ function draw() {
     startButton.stroke = color(0, 0);
 
     if (startButton.mouse.presses()) {
-        remove();
+        startButton.remove();
+        var oldcanv = document.getElementById('canvas');
+        document.removeChild(oldcanv)
+        genPlayers()
     }
 }
