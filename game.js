@@ -4,9 +4,6 @@ let windowHeight = document.documentElement.clientHeight;
 
 let sketches = [];
 
-let startButton 
-let startText 
-
 // function preload() {
 
 // }
@@ -77,7 +74,7 @@ function draw() {
     clear();
     background('lightblue');
 
-    startButton = new Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'k');
+    let startButton = new Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'k');
     startButton.text = 'Start';
     if (startButton.height < startButton.width) {startButton.textSize = startButton.height * .8} 
     else if (startButton.height > startButton.width) {startButton.textSize = startButton.width * .8}
@@ -87,7 +84,7 @@ function draw() {
     startButton.stroke = color(0, 0);
     startButton.debug();
 
-    startText = new Sprite(windowWidth / 2, windowHeight / 2 - startButton.height / 2, windowWidth * .175, windowHeight * .10, 'n');
+    let startText = new Sprite(windowWidth / 2, windowHeight / 2 - startButton.height / 2, windowWidth * .175, windowHeight * .10, 'n');
     startText.text = 'press any key to start';
     if (startText.height < startText.width) {startText.textSize = startText.height * .5} 
     else if (startText.height > startText.width) {startText.textSize = startText.width * .5}
@@ -98,7 +95,7 @@ function draw() {
     startText.debug();
     
 
-    if (Kb()) {
+    if (startButton.mouse.pressed()) {
         console.log('worked')
         startButton.remove();
         document.querySelector('main').remove();
