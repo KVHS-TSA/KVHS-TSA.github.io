@@ -83,7 +83,7 @@ function draw() {
     startButton.color.setAlpha(75);
     startButton.stroke = color(0, 0);
 
-    let startText = new Sprite(windowWidth / 2, windowHeight / 2 - startButton.height / 2, windowWidth * .175, windowHeight * .10, 'n');
+    let startText = new Sprite(windowWidth / 2, windowHeight / 2 - windowHeight * .12, windowWidth * .175, windowHeight * .10, 'n');
     startText.text = 'press any key to start';
     if (startText.height < startText.width) {startText.textSize = startText.height * .5} 
     else if (startText.height > startText.width) {startText.textSize = startText.width * .5}
@@ -93,7 +93,7 @@ function draw() {
     startText.stroke = color(0, 0);
     
 
-    if (startButton.mouse.pressed()) {
+    if (kb.presses()) {
         console.log('worked')
         startButton.remove();
         document.querySelector('main').remove();
