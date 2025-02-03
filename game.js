@@ -2,7 +2,6 @@
 let windowWidth = document.documentElement.clientWidth;
 let windowHeight = document.documentElement.clientHeight;
 
-let numPlayers = 4;
 let sketches = [];
 
 // function preload() {
@@ -12,6 +11,10 @@ let sketches = [];
 
 
 // function handling
+function nearestPowerOf2(n) {
+    return 1 << 31 - Math.clz32(n);
+ }
+
 function createSketch(index, containerId) {
     return (p) => {
         p.setup = () => {
@@ -28,16 +31,35 @@ function createSketch(index, containerId) {
     }
 }
 
-function genPlayers(num) {
+function genPlayers(numPlayers) {
     let container = document.getElementById("players");
     container.innerHTML = "";
 
     for (let i = 0; i < numPlayers; i++) {
         let playerDiv = document.createElement("div");
         playerDiv.id = `player-${i}`;
-        playerDiv.style.width = "220px";
-        playerDiv.innerHTML = `<h3>Player ${i + 1}</h3>`; // Title
-
+        if (numPlayers = 2) {
+            playerDiv.style.width = windowWidth / 2 - windowWidth * .01;
+            playerDiv.style.height = windowHeight / 2  - windowHeight * .01;
+        }
+        else if (numPlayers = 3) {
+            playerDiv.style.width = windowWidth / 3 - windowWidth * .01;
+            playerDiv.style.height = windowHeight / 3 - windowHeight * .01;
+        } 
+        else if (numPlayers = 4) {
+            playerDiv.style.width = windowWidth / 4 - windowWidth * .01;
+            playerDiv.style.height = windowHeight / 4 - windowHeight * .01;
+        }
+        else if (numPlayers > 4) {
+            console.log("Player Number Error: numPlayer > 4")
+        }
+        else if (numPlayers < 2) {
+            console.log("Player Number Error: numPlayer < 2")
+        }
+        else {
+            console.log("Player Number Error: unknown")
+        }
+        
         container.appendChild(playerDiv);
         sketches.push(new p5(createSketch(i, playerDiv.id)));
     }
@@ -54,7 +76,7 @@ function draw() {
     background('lightblue');
 
     let startButton 
-    startButton = new Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'n');
+    startButton = new Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'k');
     startButton.text = 'Start';
     startButton.textSize = startButton.height * .8;
     startButton.color = color('purple');
@@ -63,7 +85,7 @@ function draw() {
 
     if (startButton.mouse.presses()) {
         startButton.remove();
-        var oldcanv = document.getElementById('canvas');
+        let oldcanv = document.getElementById('canvas');
         document.removeChild(oldcanv)
         genPlayers()
     }

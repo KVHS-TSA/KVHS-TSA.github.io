@@ -3,11 +3,8 @@ body {
     .playerContainer {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px
-    }
-    .player {
-        border: 2px solid black;
-        padding: 5px;
-        text-align: center;
+        border-width: .5vw;
+        border-color: antiquewhite;
+        border-style: solid;
     }
 }
