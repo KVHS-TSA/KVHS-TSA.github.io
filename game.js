@@ -1,6 +1,4 @@
 // global setup
-p5play.noSplash = true;
-
 let windowWidth = document.documentElement.clientWidth;
 let windowHeight = document.documentElement.clientHeight;
 
