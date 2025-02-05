@@ -93,7 +93,7 @@ function draw() {
     startText.stroke = color(0, 0);
     
 
-    if (kb.presses()) {
+    if (startButton.mouse.presses()) {
         console.log('worked')
         startButton.remove();
         document.querySelector('main').remove();
