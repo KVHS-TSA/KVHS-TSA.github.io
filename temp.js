@@ -81,8 +81,7 @@ function draw() {
 
         var players = document.getElementById('players');
         players.style.border = ".5vw";
-        players.style.borderColor = 'rgb(255, 250, 243)';
-        players.style.borderStyle = 'solid';
+;
 
         genPlayers();
     }

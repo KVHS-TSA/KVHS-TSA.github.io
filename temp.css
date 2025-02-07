@@ -7,9 +7,13 @@
     flex: auto;
     padding-right: .5%;
     height: 98%;
+    border-color: 'rgb(255, 250, 243)';
+    border-style: 'solid';
 }
 #player-1 {
-    flex-: auto;
+    flex: auto;
     padding-left: .5;
-    height: ;
+    height: 98%;
+    border-color: 'rgb(255, 250, 243)';
+    border-style: 'solid';
 }
