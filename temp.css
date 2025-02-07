@@ -1,0 +1,14 @@
+
+.playerContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1%;
+}
+#player-0 {
+    flex: auto;
+    padding-right: .5%;
+}
+#player-1 {
+    flex: auto;
+    padding-left: .5&;
+}

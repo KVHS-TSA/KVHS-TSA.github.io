@@ -13,7 +13,7 @@ let gameState = 0
 // function handling
 function nearestPowerOf2(n) {
     return 1 << 31 - Math.clz32(n);
- }
+}
 
 function createSketch(index, containerId) {
     return (p) => {
