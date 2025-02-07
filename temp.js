@@ -18,7 +18,7 @@ function nearestPowerOf2(n) {
 function createSketch(index, containerId) {
     return (p) => {
         p.setup = () => {
-            let canvas = p.createCanvas(windowWidth / 2 - 7,  windowHeight);
+            let canvas = p.createCanvas();
             canvas.parent(containerId);
             p.background(50,50,100);
         }
@@ -31,14 +31,14 @@ function createSketch(index, containerId) {
     }
 }
 
-function genPlayers(numPlayers) {
-    let container = document.getElementById("players");
+function genPlayers() {
+    let container = document.createElement("div");
+    container.className = "playerContainer";
     container.innerHTML = "";
 
-    for (var i = 0; i < numPlayers; i++) {
+    for (var i = 0; i < 2; i++) {
         let playerDiv = document.createElement("div");
         playerDiv.id = `player-${i}`;
-        
         container.appendChild(playerDiv);
         sketches.push(new p5(createSketch(i, playerDiv.id)));
     }
@@ -65,7 +65,7 @@ function draw() {
     startButton.stroke = color(0, 0);
 
     let startText = new Sprite(windowWidth / 2, windowHeight / 2 - windowHeight * .12, windowWidth * .175, windowHeight * .10, 'n');
-    startText.text = 'press any key to start';
+    startText.text = 'click the mouse to start';
     if (startText.height < startText.width) {startText.textSize = startText.height * .5} 
     else if (startText.height > startText.width) {startText.textSize = startText.width * .5}
     else {startText.textSize = .5 * startText.width}
@@ -74,7 +74,7 @@ function draw() {
     startText.stroke = color(0, 0);
     
 
-    if (gameState = 0 && kb.presses(' ')) {
+    if (gameState = 0 && mouse.presses()) {
         console.log('worked')
         startButton.remove();
         document.querySelector('canvas').remove();
@@ -86,6 +86,4 @@ function draw() {
 
         genPlayers();
     }
-    
-    if (mouse.presses()) {console.log('a')}
 }
