@@ -18,7 +18,7 @@ function nearestPowerOf2(n) {
 function createSketch(index, containerId) {
     return (p) => {
         p.setup = () => {
-            let canvas = p.createCanvas(windowWidth / 4 - 7, windowHeight / 4 - 7);
+            let canvas = p.createCanvas(windowWidth / 2 - 7,  windowHeight);
             canvas.parent(containerId);
             p.background(50,50,100);
         }
@@ -35,30 +35,9 @@ function genPlayers(numPlayers) {
     let container = document.getElementById("players");
     container.innerHTML = "";
 
-    for (let i = 0; i < numPlayers; i++) {
+    for (var i = 0; i < numPlayers; i++) {
         let playerDiv = document.createElement("div");
         playerDiv.id = `player-${i}`;
-        if (numPlayers = 2) {
-            playerDiv.style.width = windowWidth / 2 - windowWidth * .015;
-            playerDiv.style.height = windowHeight / 2  - windowHeight * .015;
-        }
-        else if (numPlayers = 3) {
-            playerDiv.style.width = windowWidth / 3 - windowWidth * .015;
-            playerDiv.style.height = windowHeight / 3 - windowHeight * .015;
-        } 
-        else if (numPlayers = 4) {
-            playerDiv.style.width = windowWidth / 4 - windowWidth * .015;
-            playerDiv.style.height = windowHeight / 4 - windowHeight * .015;
-        }
-        else if (numPlayers > 4) {
-            console.log("Player Number Error: numPlayer > 4")
-        }
-        else if (numPlayers < 2) {
-            console.log("Player Number Error: numPlayer < 2")
-        }
-        else {
-            console.log("Player Number Error: unknown")
-        }
         
         container.appendChild(playerDiv);
         sketches.push(new p5(createSketch(i, playerDiv.id)));
@@ -98,7 +77,7 @@ function draw() {
     if (gameState = 0 && kb.presses(' ')) {
         console.log('worked')
         startButton.remove();
-        document.querySelector('main').remove();
+        document.querySelector('canvas').remove();
 
         var players = document.getElementById('players');
         players.style.border = ".5vw";
