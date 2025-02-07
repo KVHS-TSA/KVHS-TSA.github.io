@@ -72,13 +72,17 @@ function draw() {
     startText.color = color('purple');
     startText.color.setAlpha(50);
     startText.stroke = color(0, 0);
-}
 
-if (gameState = 0 && mouse.presses()) {
-    console.log('worked')
-    startButton.remove();
-    document.querySelector('canvas').remove();
+    if (mouse.presses()) {
+        console.log('worked')
+        startButton.remove();
+        document.querySelector('canvas').remove();
 
-    var players = document.getElementById('players');
-    genPlayers();
+        var players = document.getElementById('players');
+        players.style.border = ".5vw";
+        players.style.borderColor = 'rgb(255, 250, 243)';
+        players.style.borderStyle = 'solid';
+
+        genPlayers();
+    };
 }
