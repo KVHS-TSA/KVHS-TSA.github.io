@@ -74,7 +74,7 @@ function draw() {
     startText.stroke = color(0, 0);
 
     if (mouse.presses()) {
-        console.log('worked')
+        console.log('worked');
         startButton.remove();
         document.querySelector('canvas').remove();
 
