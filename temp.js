@@ -34,6 +34,7 @@ function createSketch(index, containerId) {
 function genPlayers() {
     let container = document.createElement("div");
     container.className = "playerContainer";
+    container.id = "players";
     container.innerHTML = "";
 
     for (var i = 0; i < 2; i++) {
