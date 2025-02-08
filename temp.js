@@ -3,49 +3,6 @@ let windowHeight = document.documentElement.clientHeight;
 
 let sketches = [];
 
-let mainSketch = (p) => {
-    let startButton, startText;
-
-    p.setup = () => {
-        p.createCanvas(windowWidth, windowHeight);
-    };
-
-    p.draw = () => {
-        p.clear();
-        p.background('lightblue');
-
-        // Draw start button
-        p.fill(150, 0, 150, 150);
-        p.noStroke();
-        let buttonWidth = windowWidth * 0.175;
-        let buttonHeight = windowHeight * 0.12;
-        let buttonX = windowWidth / 2 - buttonWidth / 2;
-        let buttonY = windowHeight / 2 - buttonHeight / 2;
-        p.rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
-
-        // Draw start button text
-        p.fill(255);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.textSize(buttonHeight * 0.5);
-        p.text('Start', windowWidth / 2, windowHeight / 2);
-
-        // Draw instructions text
-        let textY = windowHeight / 2 - windowHeight * 0.12 - 30;
-        p.textSize(buttonHeight * 0.4);
-        p.text('Click to start', windowWidth / 2, textY);
-    };
-
-    p.mousePressed = () => {
-        console.log('worked');
-        p.remove();
-        document.querySelector('canvas').remove();
-        genPlayers();
-    };
-};
-
-// Create main p5 instance
-new p5(mainSketch);
-
 function createSketch(index, containerId) {
     return (p) => {
         p.setup = () => {
@@ -76,3 +33,44 @@ function genPlayers() {
         new p5(createSketch(i, playerDiv.id));
     }
 }
+
+
+let mainSketch = (p) => {
+    p.setup = () => {
+        p.createCanvas(windowWidth, windowHeight);
+    };
+
+    p.draw = () => {
+        p.clear();
+        p.background('lightblue');
+
+        // Draw start button
+        p.fill(150, 0, 150, 150);
+        p.noStroke();
+        var buttonWidth = windowWidth * 0.175;
+        var buttonHeight = windowHeight * 0.12;
+        var buttonX = windowWidth / 2 - buttonWidth / 2;
+        var buttonY = windowHeight / 2 - buttonHeight / 2;
+        p.rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
+
+        // Draw start button text
+        p.fill(255);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(buttonHeight * 0.5);
+        p.text('Start', windowWidth / 2, windowHeight / 2);
+
+        // Draw instructions text
+        let textY = windowHeight / 2 - windowHeight * 0.12 - 30;
+        p.textSize(buttonHeight * 0.4);
+        p.text('Click to start', windowWidth / 2, textY);
+    };
+
+    p.mousePressed = () => {
+        console.log('worked');
+        p.remove();
+        document.querySelector('canvas').remove();
+        genPlayers();
+    };
+};
+
+new p5(mainSketch);
