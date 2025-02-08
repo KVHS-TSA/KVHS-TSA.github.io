@@ -20,14 +20,14 @@ let mainSketch = (p) => {
         p.clear();
         p.background('lightblue');
 
-        let startButton = new Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'k');
+        let startButton = new p.Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'k');
         startButton.text = 'Start';
         startButton.textSize = Math.min(startButton.height, startButton.width) * 0.8;
         startButton.color = p.color('purple');
         startButton.color.setAlpha(75);
         startButton.stroke = p.color(0, 0);
 
-        let startText = new Sprite(windowWidth / 2, windowHeight / 2 - windowHeight * .12, windowWidth * .175, windowHeight * .10, 'n');
+        let startText = new p.Sprite(windowWidth / 2, windowHeight / 2 - windowHeight * .12, windowWidth * .175, windowHeight * .10, 'n');
         startText.text = 'click the mouse to start';
         startText.textSize = Math.min(startText.height, startText.width) * 0.5;
         startText.color = p.color('purple');
