@@ -6,7 +6,7 @@ let sketches = [];
 function createSketch(index, containerId) {
     return (p) => {
         p.setup = () => {
-            let canvas = p.createCanvas();
+            let canvas = p.createCanvas(windowWidth-25,windowHeight-20);
             canvas.parent(containerId);
             p.background(50, 50, 100);
         };
@@ -63,10 +63,9 @@ let mainSketch = (p) => {
     p.mousePressed = () => {
         console.log('worked');
         p.remove();
-        const mainElement = document.querySelector('main');
-        if (mainElement) {mainElement.remove()};
+        document.querySelector('main').remove();
         genPlayers();
     };
 };
 
-new p5(mainSketch)
+new p5(mainSketch);
