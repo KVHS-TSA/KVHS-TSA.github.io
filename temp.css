@@ -5,12 +5,12 @@
 }
 #player-0 {
     flex: auto;
-    padding-right: .5%;
+    padding-right: 0.5%;
     height: 98%;
 }
 #player-1 {
     flex: auto;
-    padding-left: .5;
+    padding-left: 0.5%;
     height: 98%;
 
 }

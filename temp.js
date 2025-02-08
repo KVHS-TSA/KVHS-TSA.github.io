@@ -63,7 +63,7 @@ let mainSketch = (p) => {
     p.mousePressed = () => {
         console.log('worked');
         p.remove();
-        document.querySelector('canvas').remove();
+        document.querySelector('main').remove();
         genPlayers();
     };
 };
