@@ -12,6 +12,10 @@ let gameState = 0
 
 // function handling
 let mainSketch = (p) => {
+    p.preload = () => {
+        p.play = new p5.play();
+    };
+
     p.setup = () => {
         p.createCanvas(windowWidth, windowHeight);
     };
