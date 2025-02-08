@@ -1,20 +1,10 @@
-// global setup
 let windowWidth = document.documentElement.clientWidth;
 let windowHeight = document.documentElement.clientHeight;
 
 let sketches = [];
 
-let gameState = 0
-
-// function preload() {
-
-// }
-
-// function handling
 let mainSketch = (p) => {
-    p.preload = () => {
-        p.play = new p5.play();
-    };
+    let startButton, startText;
 
     p.setup = () => {
         p.createCanvas(windowWidth, windowHeight);
@@ -24,29 +14,36 @@ let mainSketch = (p) => {
         p.clear();
         p.background('lightblue');
 
-        let startButton = new p5play.Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'k');
-        startButton.text = 'Start';
-        startButton.textSize = Math.min(startButton.height, startButton.width) * 0.8;
-        startButton.color = p.color('purple');
-        startButton.color.setAlpha(75);
-        startButton.stroke = p.color(0, 0);
+        // Draw start button
+        p.fill(150, 0, 150, 150);
+        p.noStroke();
+        let buttonWidth = windowWidth * 0.175;
+        let buttonHeight = windowHeight * 0.12;
+        let buttonX = windowWidth / 2 - buttonWidth / 2;
+        let buttonY = windowHeight / 2 - buttonHeight / 2;
+        p.rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
 
-        let startText = new p5play.Sprite(windowWidth / 2, windowHeight / 2 - windowHeight * .12, windowWidth * .175, windowHeight * .10, 'n');
-        startText.text = 'click the mouse to start';
-        startText.textSize = Math.min(startText.height, startText.width) * 0.5;
-        startText.color = p.color('purple');
-        startText.color.setAlpha(50);
-        startText.stroke = p.color(0, 0);
+        // Draw start button text
+        p.fill(255);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(buttonHeight * 0.5);
+        p.text('Start', windowWidth / 2, windowHeight / 2);
 
-        if (p.mouseIsPressed) {
-            console.log('worked');
-            startButton.remove();
-            document.querySelector('canvas').remove();
-            genPlayers();
-        }
+        // Draw instructions text
+        let textY = windowHeight / 2 - windowHeight * 0.12 - 30;
+        p.textSize(buttonHeight * 0.4);
+        p.text('Click to start', windowWidth / 2, textY);
+    };
+
+    p.mousePressed = () => {
+        console.log('worked');
+        p.remove();
+        document.querySelector('canvas').remove();
+        genPlayers();
     };
 };
 
+// Create main p5 instance
 new p5(mainSketch);
 
 function createSketch(index, containerId) {
