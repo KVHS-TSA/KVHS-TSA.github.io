@@ -6,7 +6,7 @@ let sketches = [];
 function createSketch(index, containerId) {
     return (p) => {
         p.setup = () => {
-            let canvas = p.createCanvas(windowWidth-25,windowHeight-20);
+            let canvas = p.createCanvas(windowWidth,windowHeight / 2 - 20);
             canvas.parent(containerId);
             p.background(50, 50, 100);
         };
