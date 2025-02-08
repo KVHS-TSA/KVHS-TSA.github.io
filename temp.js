@@ -11,24 +11,54 @@ let gameState = 0
 // }
 
 // function handling
-function nearestPowerOf2(n) {
-    return 1 << 31 - Math.clz32(n);
-}
+let mainSketch = (p) => {
+    p.setup = () => {
+        p.createCanvas(windowWidth, windowHeight);
+    };
+
+    p.draw = () => {
+        p.clear();
+        p.background('lightblue');
+
+        let startButton = new Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'k');
+        startButton.text = 'Start';
+        startButton.textSize = Math.min(startButton.height, startButton.width) * 0.8;
+        startButton.color = p.color('purple');
+        startButton.color.setAlpha(75);
+        startButton.stroke = p.color(0, 0);
+
+        let startText = new Sprite(windowWidth / 2, windowHeight / 2 - windowHeight * .12, windowWidth * .175, windowHeight * .10, 'n');
+        startText.text = 'click the mouse to start';
+        startText.textSize = Math.min(startText.height, startText.width) * 0.5;
+        startText.color = p.color('purple');
+        startText.color.setAlpha(50);
+        startText.stroke = p.color(0, 0);
+
+        if (p.mouseIsPressed) {
+            console.log('worked');
+            startButton.remove();
+            document.querySelector('canvas').remove();
+            genPlayers();
+        }
+    };
+};
+
+new p5(mainSketch);
 
 function createSketch(index, containerId) {
     return (p) => {
         p.setup = () => {
-            let canvas = p.createCanvas();
+            let canvas = p.createCanvas(400, 400);
             canvas.parent(containerId);
-            p.background(50,50,100);
-        }
+            p.background(50, 50, 100);
+        };
 
         p.draw = () => {
             p.fill(255);
             p.textSize(20);
             p.text(`Player ${index + 1}`, 50, 100);
-        }
-    }
+        };
+    };
 }
 
 function genPlayers() {
@@ -36,54 +66,12 @@ function genPlayers() {
     container.className = "playerContainer";
     container.id = "players";
     container.innerHTML = "";
+    document.body.appendChild(container);
 
-    for (var i = 0; i < 2; i++) {
+    for (let i = 0; i < 2; i++) {
         let playerDiv = document.createElement("div");
         playerDiv.id = `player-${i}`;
         container.appendChild(playerDiv);
-        sketches.push(new p5(createSketch(i, playerDiv.id)));
+        new p5(createSketch(i, playerDiv.id));
     }
-}
-
-
-
-// intro screen
-function setup() {
-    createCanvas()
-}
-
-function draw() {
-    clear();
-    background('lightblue');
-
-    let startButton = new Sprite(windowWidth / 2, windowHeight / 2, windowWidth * .175, windowHeight * .12, 'k');
-    startButton.text = 'Start';
-    if (startButton.height < startButton.width) {startButton.textSize = startButton.height * .8} 
-    else if (startButton.height > startButton.width) {startButton.textSize = startButton.width * .8}
-    else {startButton.textSize = .8 * startButton.width}
-    startButton.color = color('purple');
-    startButton.color.setAlpha(75);
-    startButton.stroke = color(0, 0);
-
-    let startText = new Sprite(windowWidth / 2, windowHeight / 2 - windowHeight * .12, windowWidth * .175, windowHeight * .10, 'n');
-    startText.text = 'click the mouse to start';
-    if (startText.height < startText.width) {startText.textSize = startText.height * .5} 
-    else if (startText.height > startText.width) {startText.textSize = startText.width * .5}
-    else {startText.textSize = .5 * startText.width}
-    startText.color = color('purple');
-    startText.color.setAlpha(50);
-    startText.stroke = color(0, 0);
-
-    if (mouse.presses()) {
-        console.log('worked');
-        startButton.remove();
-        document.querySelector('canvas').remove();
-
-        var players = document.getElementById('players');
-        players.style.border = ".5vw";
-        players.style.borderColor = 'rgb(255, 250, 243)';
-        players.style.borderStyle = 'solid';
-
-        genPlayers();
-    };
 }
