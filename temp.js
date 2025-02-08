@@ -6,7 +6,7 @@ let sketches = [];
 function createSketch(index, containerId) {
     return (p) => {
         p.setup = () => {
-            let canvas = p.createCanvas(400, 400);
+            let canvas = p.createCanvas();
             canvas.parent(containerId);
             p.background(50, 50, 100);
         };
@@ -57,12 +57,7 @@ let mainSketch = (p) => {
         p.fill(255);
         p.textAlign(p.CENTER, p.CENTER);
         p.textSize(buttonHeight * 0.5);
-        p.text('Start', windowWidth / 2, windowHeight / 2);
-
-        // Draw instructions text
-        let textY = windowHeight / 2 - windowHeight * 0.12 - 30;
-        p.textSize(buttonHeight * 0.4);
-        p.text('Click to start', windowWidth / 2, textY);
+        p.text('Click to Start', windowWidth / 2, windowHeight / 2)
     };
 
     p.mousePressed = () => {
