@@ -56,16 +56,17 @@ let mainSketch = (p) => {
         // Draw start button text
         p.fill(255);
         p.textAlign(p.CENTER, p.CENTER);
-        p.textSize(buttonHeight * 0.5);
+        p.textSize(buttonWidth * 0.75);
         p.text('Click to Start', windowWidth / 2, windowHeight / 2)
     };
 
     p.mousePressed = () => {
         console.log('worked');
         p.remove();
-        document.querySelector('main').remove();
+        const mainElement = document.querySelector('main');
+        if (mainElement) {mainElement.remove()};
         genPlayers();
     };
 };
 
-new p5(mainSketch);
+new p5(mainSketch)
